@@ -11,7 +11,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "install": "cd backend && npm install && cd ../frontend && npm install",
+    "install": "cd Backend && npm install && cd ../frontend && npm install",
     "dev-server": "cd backend && npm run dev",
     "dev-client" : "cd frontend && npm start",
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
