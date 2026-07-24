@@ -3,8 +3,10 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const sendMail = require('../utils/sendMail')
 
+const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key_adityakotwalformchamba';
+
 const generateToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' })
+    return jwt.sign({ id }, JWT_SECRET, { expiresIn: '30d' })
 }
 
 // Register user
@@ -12,6 +14,9 @@ const generateToken = (id) => {
 const registerUser = async (req, res) => {
     const { name, email, password } = req.body
     try {
+        if (!email || !password) {
+            return res.status(400).json({ message: 'Email and password are required' })
+        }
         const existingUser = await User.findOne({ email })
         if (existingUser) {
             return res.status(400).json({ message: 'User already exists' })
@@ -24,7 +29,11 @@ const registerUser = async (req, res) => {
             const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
             const message = `Your OTP for email verification is: ${otp}`;
-            await sendMail(email, 'Email Verification', message);
+            try {
+                await sendMail(email, 'Email Verification', message);
+            } catch (mailErr) {
+                console.error('Failed to send mail:', mailErr.message);
+            }
 
             res.status(201).json({
                 _id: newUser._id,
@@ -40,7 +49,7 @@ const registerUser = async (req, res) => {
     }
     catch (error) {
         console.error('Error in registerUser:', error)
-        res.status(500).json({ message: 'Server error' })
+        res.status(500).json({ message: error.message || 'Server error' })
     }
 }
 
@@ -49,6 +58,9 @@ const registerUser = async (req, res) => {
 const loginUser = async (req, res)=> {
     const { email, password } = req.body
     try{
+        if (!email || !password) {
+            return res.status(400).json({ message: 'Email and password are required' });
+        }
         const foundUser = await User.findOne({email})
         if(foundUser && (await bcrypt.compare(password, foundUser.password))){
             res.json({
@@ -60,12 +72,12 @@ const loginUser = async (req, res)=> {
             })
         }
         else{
-            res.status(400).json({ message : 'invalid email or password'});
+            res.status(400).json({ message : 'Invalid email or password'});
         }
     } 
     catch (error) {
         console.error('Error in loginUser:', error)
-        res.status(500).json({message : 'Server error'})
+        res.status(500).json({message : error.message || 'Server error'})
     }
 }
 
