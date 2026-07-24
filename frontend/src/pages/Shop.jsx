@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { apiFetch } from '../api';
 import ProductCard from '../component/ProductCart';
 import '../styles/product.css';
 
@@ -10,7 +11,7 @@ const Shop = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch('/api/eco-products');
+        const res = await apiFetch('/api/eco-products');
         const data = await res.json();
         setProducts(Array.isArray(data) ? data : []);
       } catch (error) {
