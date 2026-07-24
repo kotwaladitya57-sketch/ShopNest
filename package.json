@@ -11,10 +11,11 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "postinstall": "cd Backend && npm install && cd ../frontend && npm install",
+    "postinstall": "cd Backend && npm install && cd ../frontend && npm install && npm run build",
     "dev-server": "cd Backend && npm run dev",
     "dev-client": "cd frontend && npm start",
     "start": "cd Backend && npm start",
+    "render-build": "cd frontend && npm install && npm run build",
     "render-start": "cd Backend && npm start",
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
     "build": "cd frontend && npm run build"
