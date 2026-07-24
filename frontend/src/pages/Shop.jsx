@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from '../component/ProductCart';
+import '../styles/product.css';
 
-const Home = () => {
+const Shop = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const res = await fetch('/api/eco-products');
         const data = await res.json();
-        const productList = Array.isArray(data) ? data : [];
-        setProducts(productList.slice(0, 4)); // Featured products
+        setProducts(Array.isArray(data) ? data : []);
       } catch (error) {
         console.error(error);
-        setProducts([]);
       } finally {
         setLoading(false);
       }
@@ -22,18 +22,23 @@ const Home = () => {
     fetchProducts();
   }, []);
 
+  const filteredProducts = products.filter(p => p.name.toLowerCase().includes(search.toLowerCase()));
+
   return (
-    <div className="home-container">
-      <div className="hero-banner">
-        <h1>Welcome to ShopNest</h1>
-        <p>Discover the best products at unbeatable prices.</p>
-      </div>
-      <h2>Featured Products</h2>
+    <div className="shop-container">
+      <h2>All Products</h2>
+      <input 
+        type="text" 
+        placeholder="Search products..." 
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="search-bar"
+      />
       {loading ? (
         <div>Loading...</div>
       ) : (
         <div className="product-grid">
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <ProductCard key={product._id} product={product} />
           ))}
         </div>
@@ -42,4 +47,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Shop;

@@ -11,13 +11,16 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "install": "cd Backend && npm install && cd ../frontend && npm install",
+    "postinstall": "cd Backend && npm install && cd ../frontend && npm install",
     "dev-server": "cd Backend && npm run dev",
-    "dev-client" : "cd frontend && npm start",
+    "dev-client": "cd frontend && npm start",
+    "start": "cd frontend && npm start",
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
-    "build" : "cd frontend && npm run build"
+    "build": "cd frontend && npm run build"
   },
   "dependencies": {
-    "concurrently": "^10.0.3"
+    "@reduxjs/toolkit": "^2.12.0",
+    "concurrently": "^10.0.3",
+    "react-redux": "^9.3.0"
   }
 }
