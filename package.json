@@ -14,7 +14,8 @@
     "postinstall": "cd Backend && npm install && cd ../frontend && npm install",
     "dev-server": "cd Backend && npm run dev",
     "dev-client": "cd frontend && npm start",
-    "start": "cd frontend && npm start",
+    "start": "cd Backend && npm start",
+    "render-start": "cd Backend && npm start",
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
     "build": "cd frontend && npm run build"
   },
