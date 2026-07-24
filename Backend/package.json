@@ -12,6 +12,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "render-build": "cd ../frontend && npm install && npm run build",
+    "render-start": "npm start",
     "seed": "node seed.js"
   },
   "dependencies": {
