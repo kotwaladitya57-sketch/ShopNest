@@ -11,8 +11,8 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        logout()
-        navigate('/logout')
+        logout();
+        navigate('/login');
     }
     return (
         <nav className="navbar">
@@ -29,7 +29,7 @@ const Navbar = () => {
                     <>
                         <li><Link to="/profile"> Hi,{user.name}</Link></li>
                         {user.role === 'admin' && <li> <Link to="/admin">Admin</Link></li>}
-                        <li><button onClick={handleLogout}>logout</button></li>
+                        <li><button onClick={handleLogout} className="btn-logout">Logout</button></li>
                     </>
                 ) : (
                     <li>

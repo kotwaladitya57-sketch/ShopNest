@@ -58,7 +58,7 @@ const Profile = () => {
           <p style={{ color: '#a1a1aa', fontSize: '1.2rem', marginBottom: '15px' }}><strong>Email:</strong> {user.email}</p>
           <span style={badgeStyle}>Account Type: {user.role.toUpperCase()}</span>
         </div>
-        <button onClick={handleLogout} className="btn" style={{ background: '#ef4444', boxShadow: 'none' }}>Logout</button>
+        <button onClick={handleLogout} className="btn-logout">Logout</button>
       </div>
 
       <h3 style={{ color: '#f97316', marginBottom: '20px', fontSize: '1.5rem' }}>Order History</h3>
