@@ -155,3 +155,210 @@ h2 {
 ::-webkit-scrollbar-thumb:hover {
   background: #3f3f46; 
 }
+
+/* Razorpay Modal Overlay & Interface */
+.rzp-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  animation: fadeIn 0.3s ease;
+}
+
+.rzp-modal-card {
+  width: 90%;
+  max-width: 440px;
+  background: #0f172a;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  color: #f8fafc;
+}
+
+.rzp-header {
+  background: linear-gradient(135deg, #0c2340 0%, #1e293b 100%);
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.rzp-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rzp-logo-badge {
+  width: 38px;
+  height: 38px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 800;
+  font-size: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4);
+}
+
+.rzp-brand h4 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #fff;
+}
+
+.rzp-test-badge {
+  font-size: 0.75rem;
+  background: rgba(249, 115, 22, 0.2);
+  color: #f97316;
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(249, 115, 22, 0.4);
+  font-weight: 600;
+}
+
+.rzp-amount-badge {
+  text-align: right;
+}
+
+.rzp-amount-badge span {
+  display: block;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.rzp-amount-badge strong {
+  font-size: 1.15rem;
+  color: #38bdf8;
+}
+
+.rzp-close-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.rzp-close-btn:hover {
+  color: #fff;
+}
+
+.rzp-body {
+  padding: 20px;
+}
+
+.rzp-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  background: #1e293b;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.rzp-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  padding: 10px 6px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rzp-tab.active {
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+}
+
+.rzp-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.rzp-field-group label {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.rzp-field-group input,
+.rzp-select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #f8fafc;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.rzp-field-group input:focus,
+.rzp-select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+}
+
+.rzp-hint {
+  font-size: 0.78rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.rzp-pay-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #fff;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
+}
+
+.rzp-pay-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  transform: translateY(-1px);
+}
+
+.rzp-pay-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.rzp-footer {
+  text-align: center;
+  padding: 12px;
+  background: #090d16;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.rzp-footer strong {
+  color: #94a3b8;
+}
